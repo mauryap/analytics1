@@ -39,6 +39,13 @@ marks = trunc(runif(30, 50, 90))
 df1 = data.frame(sname, marks, gender)
 df1
 head(df1)
+# missing values
+df1[sample(1:30, size = 5),2] = NA
+df1
+is.na(df1)
+mean(df1$marks,na.rm = T)
+df1[(!complete.cases(df1)),2] =  mean(df1$marks,na.rm = T)
+df1
 # list of all the student who have scored between 30
 
 library(dplyr)
